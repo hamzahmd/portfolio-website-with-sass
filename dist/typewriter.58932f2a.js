@@ -117,79 +117,89 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"js/typewriter.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var TypeWriter = /*#__PURE__*/function () {
+  function TypeWriter(txtElement, words) {
+    var wait = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3000;
+
+    _classCallCheck(this, TypeWriter);
+
+    this.txtElement = txtElement;
+    this.words = words;
+    this.txt = '';
+    this.wordIndex = 0;
+    this.wait = parseInt(wait, 10);
+    this.type();
+    this.isDeleting = false;
   }
 
-  return bundleURL;
-}
+  _createClass(TypeWriter, [{
+    key: "type",
+    value: function type() {
+      var _this = this;
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+      // Current index of word
+      var current = this.wordIndex % this.words.length; // Get full text of current word
 
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
+      var fullTxt = this.words[current]; // Check if deleting
 
-  return '/';
-}
+      if (this.isDeleting) {
+        // Remove char
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        // Add char
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      } // Insert txt into element
 
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
 
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
+      this.txtElement.innerHTML = "<span class=\"txt\">".concat(this.txt, "</span>"); // Initial Type Speed
 
-function updateLink(link) {
-  var newLink = link.cloneNode();
+      var typeSpeed = 150;
 
-  newLink.onload = function () {
-    link.remove();
-  };
+      if (this.isDeleting) {
+        typeSpeed /= 2;
+      } // If word is complete
 
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
 
-var cssTimeout = null;
+      if (!this.isDeleting && this.txt === fullTxt) {
+        // Make pause at end
+        typeSpeed = this.wait; // Set delete to true
 
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false; // Move to next word
 
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
+        this.wordIndex++; // Pause before start typing
 
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
+        typeSpeed = 500;
       }
+
+      setTimeout(function () {
+        return _this.type();
+      }, typeSpeed);
     }
+  }]);
 
-    cssTimeout = null;
-  }, 50);
+  return TypeWriter;
+}(); // Init On DOM Load
+
+
+document.addEventListener('DOMContentLoaded', init); // Init App
+
+function init() {
+  var txtElement = document.querySelector('.txt-type');
+  var words = JSON.parse(txtElement.getAttribute('data-words'));
+  var wait = txtElement.getAttribute('data-wait'); // Init TypeWriter
+
+  new TypeWriter(txtElement, words, wait);
 }
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"scss/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./..\\img\\Cover1.jpg":[["Cover1.daaef567.jpg","img/Cover1.jpg"],"img/Cover1.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +403,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.77bb5cfd.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/typewriter.js"], null)
+//# sourceMappingURL=/typewriter.58932f2a.js.map
