@@ -31,6 +31,11 @@ input[class^="btn-"]:hover {
   background-color: $main-color;
   color: $light-color;
 }
+.bg {
+  &-light {
+    background: $light-color;
+  }
+}
 .lead {
   font-size: 1.3rem;
   margin-bottom: 1.5rem;

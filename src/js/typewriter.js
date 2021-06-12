@@ -63,3 +63,29 @@ function init() {
   // Init TypeWriter
   new TypeWriter(txtElement, words, wait);
 }
+// sticky Menu Background
+window.addEventListener('scroll',function(){
+  if (window.scrollY>150){
+    document.querySelector('#nav').style.opacity=0.9;  
+  } else {
+    document.querySelector('#nav').style.opacity=1;  
+  }
+});
+//smooth scrolling
+$('#nav a, .btn').on('click', function(event){
+  if(this.hash !== ''){
+    event.preventDefault();
+
+    const hash = this.hash;
+
+    $('html, body').animate(
+      {
+        scrollTop: $(hash).offset().top - 50
+      },
+      800
+    );
+  }
+}); 
+
+
+
