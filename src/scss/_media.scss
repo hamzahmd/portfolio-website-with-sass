@@ -1,0 +1,178 @@
+// Tablets
+@media (max-width: 800px) {
+  #header-home {
+    height: 30rem;
+  }
+  #about {
+    .about-container {
+      .image-container {
+        padding: 1rem 1.5rem;
+      }
+      img {
+        width: 80%;
+      }
+      .bio {
+        padding: 1.5rem 1.5rem;
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  #contact {
+    h2 {
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    p {
+      display: none;
+      font-size: 1rem;
+    }
+    .contact-content {
+      flex-direction: column;
+      padding-top: 0;
+      overflow: hidden;
+      .fav-contact {
+        text-align: justify;
+        span {
+          margin-left: 20px;
+          font-size: 0.95rem;
+        }
+      }
+      iframe {
+        flex: 1;
+        width: 100%;
+        overflow: hidden;
+        order: 2;
+      }
+    }
+  }
+  #footer {
+    height: 7rem;
+    .footer-content {
+      flex-direction: column;
+
+      padding: 1rem;
+      height: 5rem;
+      p {
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+//  Smartphones
+@media (max-width: 600px) {
+  #nav {
+    padding: 0rem 1rem;
+    padding-top: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+
+    ul {
+      padding-top: 0.2rem;
+      li {
+        padding: 1rem 0.5rem;
+        a {
+          padding: 0.3rem 0.5rem;
+        }
+      }
+    }
+  }
+  #header {
+    &-home {
+      height: 30rem;
+      border-bottom: 3px solid $main-color;
+      .header-content {
+        justify-content: center;
+        h1 {
+          font-size: 1.3rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+        .btn-light {
+          font-size: 1rem;
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+  }
+  #about {
+    .about-info {
+      flex-direction: column;
+      .image-container {
+        padding-top: 2rem;
+        padding-bottom: 0.5rem;
+      }
+      img {
+        width: 70%;
+      }
+
+      .bio {
+        text-align: center;
+        padding: 1.5rem 1rem;
+        h2 {
+          font-size: 1.3rem;
+        }
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  #work {
+    h2 {
+      font-size: 1.3rem;
+    }
+    .items {
+      grid-template-columns: 1fr;
+      :nth-child(5),
+      :nth-child(7),
+      :nth-child(8),
+      :nth-child(9) {
+        display: none;
+      }
+    }
+  }
+  #contact {
+    h2 {
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    p {
+      display: none;
+      font-size: 1rem;
+    }
+    .contact-content {
+      flex-direction: column;
+      padding-top: 0;
+      overflow: hidden;
+      .fav-contact {
+        text-align: justify;
+        span {
+          margin-left: 20px;
+          font-size: 0.95rem;
+        }
+      }
+      iframe {
+        flex: 1;
+        width: 100%;
+        overflow: hidden;
+        order: 2;
+      }
+    }
+  }
+  #footer {
+    height: 7rem;
+    .footer-content {
+      flex-direction: column;
+
+      padding: 1rem;
+      height: 5rem;
+      p {
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}

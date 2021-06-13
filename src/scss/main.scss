@@ -1,6 +1,7 @@
 @import "config";
 @import "general";
 @import "item_grid";
+
 // General Styling
 * {
   margin: 0;
@@ -102,7 +103,7 @@ img {
 }
 //About Section
 #about {
-  background: $medium-color;
+  background: $light-color;
   .about-container {
     text-align: center;
     margin: 0rem 2rem;
@@ -131,7 +132,7 @@ img {
       text-align: left;
       justify-content: center;
       width: 100%;
-      padding: 0rem 2rem;
+      padding: 1.5rem 2rem;
       // border-radius: 0 35px;
       // border-left: $main-color 8px solid;
       p {
@@ -157,13 +158,15 @@ img {
 
 // Contact.html Contact Form
 #contact {
-  background: $medium-color;
+  background: $light-color;
 
   .contact-content {
     display: flex;
     padding-top: 2rem;
+    overflow: hidden;
     iframe {
-      flex: 1;
+      flex: 1.25;
+      overflow: hidden;
     }
   }
   .container {
@@ -222,3 +225,5 @@ img {
     cursor: pointer;
   }
 }
+//Responsive Design
+@import "media";
