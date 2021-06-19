@@ -321,6 +321,7 @@ img {
 }
 
 .social .fab {
+  color: #fff;
   margin-right: 1rem;
   border: 2px #fff solid;
   border-radius: 50%;
