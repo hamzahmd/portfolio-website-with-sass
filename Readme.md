@@ -1,7 +1,7 @@
 # Portfolio Project with Sass
 
-This portfolio website was created with sass pre-compiler.
+This portfolio website was created with sass preprocessor.
 
-Here is the website URL:
+## [Preview](https://www.mdyamman.com)
 
-https://www.mdyamman.com
+![Overview](https://i.ibb.co/mFf5NMr/Portfolio-with-Sass.png)
